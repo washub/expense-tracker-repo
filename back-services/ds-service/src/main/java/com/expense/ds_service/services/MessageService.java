@@ -20,7 +20,7 @@ public class MessageService {
     public ExpenseDTO processMessage(AIMessageDTO message){
         if(MessageUtils.isBankMessage(message.message())){
             log.info("Retrieved message belongs to expense category :: processing the message");
-            return llmService.runLLM(message);
+            return llmService.runLLM_latestPrompt(message);
         }
 
         log.info("Retrieved message is not of expense category");
