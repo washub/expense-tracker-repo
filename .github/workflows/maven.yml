@@ -31,11 +31,17 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file back-services/ds-service/pom.xml
+    
+    - name: Debug:Find the generated JAR files
+        run: find back-services/ds-service/ -name "*.jar"
     - name: Login to Docker
       uses: docker/login-action@v2
       with:
         username: ${{secrets.DOCKER_USERNAME}}
         password: ${{secrets.DOCKER_PASSWORD}}
+        
+    - name: ✅ Debug: List contents of Docker build context
+        run: ls -R back-services/ds-service/
     - name: Build Docker image
       run: docker build -f back-services/ds-service/Dockerfile back-services/ds-service -t $IMAGE_NAME:${{ github.sha }}
     - name: deploye
