@@ -63,8 +63,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>ds-service-app</finalName>
+				</configuration>
 			</plugin>
-			<finalName>ds-service-app</finalName>
 		</plugins>
 	</build>
 
