@@ -37,7 +37,7 @@ jobs:
         username: ${{secrets.DOCKER_USERNAME}}
         password: ${{secrets.DOCKER_PASSWORD}}
     - name: Build Docker image
-      run: docker build -t $IMAGE_NAME:${{ github.sha }} -f back-services/ds-service/Dockerfile
+      run: docker build -f back-services/ds-service/Dockerfile -t $IMAGE_NAME:${{ github.sha }}
     - name: deploye
       run: docker push $IMAGE_NAME:${{ github.sha }}
       
